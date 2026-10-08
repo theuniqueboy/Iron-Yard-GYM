@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Iron Yard Gym</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef1f4;--card:#fff;--ink:#101820;--mute:#4d5b69;--line:#d3dae1;--steel:#1b2733;--on-steel:#f2f5f8;--acc:#ffc400;--on-acc:#101820;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e151d;--card:#17212c;--ink:#eef2f6;--mute:#a3b0bd;--line:#2a3745;--steel:#0a1017}}
+:root[data-theme="dark"]{--bg:#0e151d;--card:#17212c;--ink:#eef2f6;--mute:#a3b0bd;--line:#2a3745;--steel:#0a1017}
+html{scroll-padding-top:calc(68px + env(safe-area-inset-top,0px));scroll-behavior:smooth}
+*,*:before,*:after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 Barlow,system-ui,sans-serif}
+h1,h2,h3{font-family:"Barlow Condensed","Arial Narrow",sans-serif;font-weight:800;line-height:1;margin:0}
+a{color:inherit}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--steel);color:var(--on-steel)}
+header .wrap{display:flex;align-items:center;justify-content:center;height:60px}
+.logo{font:800 32px "Barlow Condensed",sans-serif;text-decoration:none;letter-spacing:1px}
+.logo b{color:var(--acc)}
+.btn{display:inline-block;padding:13px 22px;border-radius:6px;font-weight:600;text-decoration:none;border:2px solid var(--acc);background:var(--acc);color:var(--on-acc);cursor:pointer;font-size:16px;font-family:inherit}
+.btn.ghost{background:transparent;color:inherit}
+.btn.sm{padding:8px 16px;font-size:15px}
+.btn.quiet{padding:7px 14px;font-size:14px;font-weight:500;background:transparent;color:#c3ced9;border:1px solid rgba(242,245,248,.35)}
+.hero{background:linear-gradient(160deg,#1b2733 0%,#0a1017 100%);color:var(--on-steel);padding:18px 0 48px}
+.hero-top{display:flex;justify-content:flex-end;margin-bottom:22px}
+.hero h1{font-size:clamp(52px,15vw,104px);text-transform:uppercase;letter-spacing:-.5px}
+.hero p{max-width:34ch;font-size:19px;color:#c3ced9;margin:18px 0 28px}
+.hero .row{display:flex;gap:12px;flex-wrap:wrap}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:var(--acc);color:var(--on-acc)}
+.stats div{padding:18px 8px;text-align:center;border-right:2px solid rgba(16,24,32,.18)}
+.stats div:last-child{border:0}
+.stats b{display:block;font:800 34px "Barlow Condensed",sans-serif}
+.stats span{font-size:14px;font-weight:500}
+section{padding:52px 0}
+h2{font-size:clamp(34px,8vw,46px);margin-bottom:8px}
+.sub{color:var(--mute);margin:0 0 26px;max-width:46ch}
+.grid{display:grid;gap:14px}
+.svc{grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+.svc div{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--acc);padding:18px 18px 16px;border-radius:4px}
+.svc h3{font-size:25px;margin-bottom:6px}
+.svc p{margin:0;color:var(--mute);font-size:15px}
+.plans{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.plan{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:22px;display:flex;flex-direction:column}
+.plan.best{border:2px solid var(--acc);box-shadow:0 0 0 3px rgba(255,196,0,.18)}
+.plan h3{font-size:26px}
+.price{font:700 54px/1.1 "Barlow Condensed",sans-serif;margin:8px 0 2px}
+.price small{font:500 15px Barlow,sans-serif;color:var(--mute)}
+.plan ul{list-style:none;padding:0;margin:14px 0 20px;flex:1;color:var(--mute);font-size:15px}
+.plan li{padding:5px 0;border-top:1px solid var(--line)}
+.tag{align-self:flex-start;background:var(--acc);color:var(--on-acc);font-size:13px;font-weight:600;padding:2px 10px;border-radius:20px;margin-bottom:8px}
+.time{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.time div{background:var(--steel);color:var(--on-steel);padding:20px;border-radius:6px}
+.time h3{font-size:24px;color:var(--acc);margin-bottom:4px}
+form{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:22px;display:grid;gap:14px;max-width:520px}
+label{font-weight:600;font-size:15px;display:grid;gap:6px}
+input,select{font:inherit;padding:12px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink)}
+input:focus-visible,select:focus-visible,.btn:focus-visible,a:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.loc{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+footer{background:var(--steel);color:#9fb0bf;padding:26px 0;font-size:14px;text-align:center}
+.wa{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:6;background:#25d366;color:#07310f;font-weight:700;padding:13px 18px;border-radius:40px;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.3)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="#top">IRON<b>YARD</b></a></div></header>
+
+<div class="hero" id="top"><div class="wrap">
+<div class="hero-top"><a class="btn quiet" href="tel:+918475074312">Call now</a></div>
+<h1>Show up daily.<br>Build your body.</h1>
+<p>Heavy weights, trained coaches, and a gym where every member gets a personalised plan.</p>
+<div class="row"><a class="btn" href="#trial">Book a free trial</a><a class="btn ghost" href="#plans">View plans</a></div>
+</div></div>
+
+<div class="stats"><div><b>500+</b><span>Members</span></div><div><b>8</b><span>Certified trainers</span></div><div><b>5 AM</b><span>Opening time</span></div></div>
+
+<section><div class="wrap">
+<h2>What we offer</h2>
+<p class="sub">Training for every level, from complete beginners to competitive athletes.</p>
+<div class="grid svc">
+<div><h3>Strength Training</h3><p>Free weights, racks and machines, with proper form guidance for every exercise.</p></div>
+<div><h3>Cardio Zone</h3><p>Treadmills, cycles and cross-trainers, plus a dedicated cardio plan for fat loss.</p></div>
+<div><h3>Personal Training</h3><p>A one-on-one coach, a diet chart and a monthly progress check.</p></div>
+<div><h3>Yoga &amp; Zumba</h3><p>Group batches in the morning and evening, with a separate ladies' batch.</p></div>
+</div></div></section>
+
+<section id="plans" style="padding-top:0"><div class="wrap">
+<h2>Membership plans</h2>
+<p class="sub">Pay directly via UPI, or message us on WhatsApp with any questions.</p>
+<div class="grid plans">
+<div class="plan"><h3>Monthly</h3><div class="price">₹1,200<small> /month</small></div>
+<ul><li>Full gym floor access</li><li>Cardio zone</li><li>Basic workout plan</li></ul>
+<a class="btn" href="upi://pay?pa=ironyard@upi&pn=Iron%20Yard%20Gym&am=1200&cu=INR&tn=Monthly%20plan">Pay now</a></div>
+<div class="plan best"><span class="tag">Most popular</span><h3>Quarterly</h3><div class="price">₹3,000<small> /3 months</small></div>
+<ul><li>Full gym floor access</li><li>Yoga &amp; Zumba batches</li><li>Diet chart</li><li>Monthly body check</li></ul>
+<a class="btn" href="upi://pay?pa=ironyard@upi&pn=Iron%20Yard%20Gym&am=3000&cu=INR&tn=Quarterly%20plan">Pay now</a></div>
+<div class="plan"><h3>Yearly</h3><div class="price">₹9,999<small> /year</small></div>
+<ul><li>Everything in Quarterly</li><li>2 personal training sessions</li><li>15-day plan freeze</li></ul>
+<a class="btn" href="upi://pay?pa=ironyard@upi&pn=Iron%20Yard%20Gym&am=9999&cu=INR&tn=Yearly%20plan">Pay now</a></div>
+</div></div></section>
+
+<section style="padding-top:0"><div class="wrap">
+<h2>Timings</h2>
+<p class="sub">On Sundays, only the morning batch runs.</p>
+<div class="time">
+<div><h3>Morning</h3>5:00 AM to 10:00 AM</div>
+<div><h3>Evening</h3>4:00 PM to 11:00 PM</div>
+<div><h3>Ladies' batch</h3>10:00 AM to 12:00 PM</div>
+</div></div></section>
+
+<section id="trial" style="padding-top:0"><div class="wrap">
+<h2>Book a free trial</h2>
+<p class="sub">Fill in the form and WhatsApp will open with your message already written.</p>
+<form id="f">
+<label>Your name<input id="n" required placeholder="Rahul"></label>
+<label>Plan<select id="p"><option>Monthly</option><option selected>Quarterly</option><option>Yearly</option></select></label>
+<label>Preferred batch<select id="t"><option>Morning</option><option>Evening</option><option>Ladies' batch</option></select></label>
+<button class="btn" type="submit">Book on WhatsApp</button>
+</form>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+<h2>Find us</h2>
+<p class="sub">Shop 14, Main Market, Sector 12, Your City</p>
+<div class="loc"><a class="btn" href="https://www.google.com/maps/search/?api=1&query=gym" target="_blank" rel="noopener">Open in Google Maps</a><a class="btn ghost" style="color:var(--ink)" href="tel:+918475074312">+91 84750 74312</a></div>
+</div></section>
+
+<footer>Iron Yard Gym. Demo website.</footer>
+<a class="wa" id="wa" href="https://wa.me/918475074312?text=Hi%2C%20I%20would%20like%20to%20know%20more%20about%20the%20gym." target="_blank" rel="noopener">WhatsApp</a>
+
+<script>
+document.getElementById('f').addEventListener('submit',function(e){
+e.preventDefault();
+var m='Hi, my name is '+document.getElementById('n').value+'. I would like to book a free trial for the '+document.getElementById('p').value+' plan. Preferred batch: '+document.getElementById('t').value+'.';
+window.open('https://wa.me/918475074312?text='+encodeURIComponent(m),'_blank');
+});
+</script>
+</body>
+</html>
